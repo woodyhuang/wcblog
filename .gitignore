@@ -1,0 +1,7 @@
+/django
+/.project
+/.pydevproject
+*.mo
+*.log
+*.pyc
+*.db

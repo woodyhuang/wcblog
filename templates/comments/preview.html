@@ -1,0 +1,42 @@
+{% extends "_base.html" %}
+{% load comments %}
+
+{% block title %}{% trans "Preview your comment" %}{% endblock %}
+
+{% block content %}
+  <p>
+        <a class="btn btn-danger" onclick="window.location.href='/post/'+$('#id_object_pk').val();return true;" href="#">&laquo; 放弃评论，返回文章</a>
+  </p>
+  <form action="{% comment_form_target %}" method="post" class="comment_form">{% csrf_token %}
+    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+    {% if form.errors %}
+        <h2>{% blocktrans count counter=form.errors|length %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h2>
+        <hr/>
+    {% else %}
+        <h2>{% trans "Preview your comment" %}</h2>
+        <hr/>
+        <blockquote>{{ comment|wiki2html|safe }}</blockquote>
+        <br/>
+        <p>
+            {% trans "You can" %} <input type="submit" name="submit" class="btn btn-primary" value="{% trans "Post your comment" %}" id="submit" /> {% trans "or make changes" %}:
+        </p>
+    {% endif %}
+    {% for field in form %}
+        {% if field.is_hidden %}
+            {{ field }}
+        {% else %}
+            <div class="control-group{% if field.errors %} error{% endif %}"{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                {{ field.label_tag }}
+                <div class="controls">
+                    {{ field }}
+                    {% if field.errors %}<span class="help-inline">{{ field.errors }}</span>{% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <p class="submit">
+        <input type="submit" name="post" class="btn btn-primary" value="{% trans "Post" %}" />
+        <input type="submit" name="preview" class="btn" value="{% trans "Preview" %}" />
+    </p>
+  </form>
+{% endblock %}
