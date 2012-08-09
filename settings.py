@@ -3,7 +3,7 @@ import os
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -29,7 +29,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = 'Asia/Shanghai' #'Europe/London'#'America/Chicago'#
 
 USE_TZ = True
 
@@ -133,6 +133,11 @@ INSTALLED_APPS = (
     'common',
     'blog',
 )
+
+try:
+    from local_settings import *
+except:
+    pass
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
