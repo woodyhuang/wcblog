@@ -1,6 +1,6 @@
 {% load comments %}
 <form class="comment_form" action="{% comment_form_target %}" method="post">{% csrf_token %}
-    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+    <input type="hidden" name="next" value="{{ next }}" id="comment_next_url" />
     {% for field in form %}
     {% if field.is_hidden %}
         {{ field }}

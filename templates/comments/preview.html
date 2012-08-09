@@ -5,10 +5,10 @@
 
 {% block content %}
   <p>
-        <a class="btn btn-danger" onclick="window.location.href='/post/'+$('#id_object_pk').val();return true;" href="#">&laquo; 放弃评论，返回文章</a>
+      <a class="btn btn-danger" id="cancel_comment_btn" href="#">&laquo; 放弃评论，返回文章</a>
   </p>
   <form action="{% comment_form_target %}" method="post" class="comment_form">{% csrf_token %}
-    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+    {% if next %}<input type="hidden" name="next" value="{{ next }}" id="comment_next_url"/>{% endif %}
     {% if form.errors %}
         <h2>{% blocktrans count counter=form.errors|length %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h2>
         <hr/>
@@ -39,4 +39,19 @@
         <input type="submit" name="preview" class="btn" value="{% trans "Preview" %}" />
     </p>
   </form>
-{% endblock %}
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+$(function(){
+    $('#cancel_comment_btn').click(function(){
+        var backUrl = $('#comment_next_url').val();
+        if (backUrl) {
+            window.location.href = backUrl;
+        } else {
+            window.history.back();
+        }
+    });
+});
+</script>
+{% endblock extra_js %}

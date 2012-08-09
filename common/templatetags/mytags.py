@@ -1,7 +1,6 @@
 from django import template
 
-import creole
-from  creole.html_emitter import HtmlEmitter
+from creole import creole2html
 
 from common import LOG
 from blog.models import Tag
@@ -19,7 +18,10 @@ def startswith(string, prefix):
 
 @register.filter(name='wiki2html')
 def wiki2html(wiki_str):
-    return HtmlEmitter(creole.Parser(wiki_str).parse()).emit()
+    """
+    To make this work, you need to copy creole package into your python path.
+    """
+    return creole2html(wiki_str)
 
 
 MON_NAME = {1: 'JAN',

@@ -6,7 +6,6 @@
 {% block content %}
 <section class="well post">
     <h1>{{ blog.title }}</h1>
-    
     <address class="post_infos">
                             发表于{{ blog.created|localtime }} {% if TIME_ZONE %}（{{TIME_ZONE}}）{% endif %}
         &nbsp;
@@ -15,9 +14,9 @@
         {% endfor %}
     </address>
     <hr/>
-    <p>
-    {{ blog.content|wiki2html|safe }}
-    <p>
+    <div>
+        {{ blog.content|wiki2html|safe }}
+    </div>
 </section>
 
 <p>
@@ -26,9 +25,7 @@
 
 <hr/>
 {% render_comment_list for blog %}
-
 {% render_comment_form for blog %}
-
 {% endblock content %}
 
 {% block extra_js %}
@@ -39,7 +36,6 @@ $(function(){
     var _url = window.location.href;
     var p = _url.indexOf('?c=');
     if (p != -1) {
-        console.log('returned after comment:', _url);
         var cid = _url.slice(p +3);
         var cObj = document.getElementById('c'+ cid);
         if (cObj) {
