@@ -1,9 +1,7 @@
 from django import shortcuts
 from django.template import RequestContext
-from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 
-from common import LOG
 from blog.models import Article, Tag
 
 def home(request):
