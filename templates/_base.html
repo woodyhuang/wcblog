@@ -2,10 +2,11 @@
 <html lang="zh">
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}我的博客 {% endblock %}</title>
+        <title>{% block title %}Woody的博客 {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="woody, wenchen">
+        <meta name="description" content="{% block description %}Woody基于WCBlog的博客{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}嘉值云计算 ,Python,Web开发,OpenStack{% endblock %}"/>
+        <meta name="author" content="wenchen, woody">
         
         <link href="/static/bootstrap/bootstrap.css" rel="stylesheet">
         <style>
