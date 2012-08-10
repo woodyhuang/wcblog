@@ -10,6 +10,11 @@
             {{ field.label_tag }}
             <div class="controls">
                 {{ field }}
+                {% ifequal field.name "comment" %}
+                    <p>
+                        <em>评论内容支持<a href="http://wikicreole.org/attach/CheatSheet/creole_cheat_sheet.png" target="_blank">Creole WIKI</a>格式</em>
+                    </p>
+                {% endifequal %}
             </div>
         </div>
     {% endif %}
