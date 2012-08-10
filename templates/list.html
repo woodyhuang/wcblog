@@ -32,7 +32,7 @@
             &nbsp;
         {% endfor %}
     </address>
-    {{ blog.content|slice:'100'|wiki2html|safe }}
+    {{ blog.content|wiki2html|slice:'300'|safe }}
     <p><a class="btn" href="{% url post-detail blog.id %}">View details &raquo;</a></p>
 </section>
 {% empty %}

@@ -1,4 +1,5 @@
 from django import template
+from django.utils.encoding import force_unicode
 
 from creole import creole2html
 
@@ -21,7 +22,7 @@ def wiki2html(wiki_str):
     """
     To make this work, you need to copy creole package into your python path.
     """
-    return creole2html(wiki_str)
+    return creole2html(force_unicode(wiki_str))
 
 
 MON_NAME = {1: 'JAN',
