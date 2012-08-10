@@ -110,3 +110,15 @@ ul.errorlist, ul.errorlist li{
     padding:0px;
     margin:0px;
 }
+.power-link-wcblog {
+    background-image: url(images/wcblog.jpg);
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    display: block;
+    border: none;
+    cursor: pointer;
+}
+.power-link-wcblog:hover{
+    text-decoration: none;
+}
