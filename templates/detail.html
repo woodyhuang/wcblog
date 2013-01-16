@@ -2,6 +2,11 @@
 
 {% block title %}{{ blog.title }} - Woody的博客 {% endblock %}
 {% block description %}{{blog.content|slice:'100'}}{% endblock %}
+{% block keywords %}{{ blog.title }}, {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<link href="/static/google-code-prettify/prettify.css" rel="stylesheet">
+{% endblock extra_css %}
 
 {% load tz %}
 {% load comments %}
@@ -32,10 +37,17 @@
 {% endblock content %}
 
 {% block extra_js %}
+<script src="/static/google-code-prettify/prettify.js"></script>
+
 <script>
 $(function(){
-    $('.well.post').find('table').addClass('table table-bordered table-striped');
+    // prettify post content
+    $('.well.post').find('table').addClass('table table-bordered table-striped')
+        .end().find('pre').addClass('prettyprint linenums');
+    
     //$('.comment_form').find('textarea').css({'width':'60%','height':'100px','min-width':'210px'});
+    
+    // see the comments
     var _url = window.location.href;
     var p = _url.indexOf('?c=');
     if (p != -1) {
@@ -45,6 +57,8 @@ $(function(){
             cObj.scrollIntoView();    
         }
     }
+    
+    window.prettyPrint && prettyPrint();
 });
 </script>
 {% endblock extra_js %}
