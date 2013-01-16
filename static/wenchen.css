@@ -47,6 +47,9 @@ footer{
 .post_header{
     background-color: #DEDEDE;
     box-shadow: 0 3px 3px -3px #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 .post_date {
     float: left;
@@ -59,14 +62,14 @@ footer{
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     box-shadow: 0 3px 3px -3px #ccc;
-    /*
-    background:#A5C451;
-    */
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 .post_date span {
     display: block;
-    margin-top: 5px;
-    font-size: 20px;
+    margin-top: 8px;
+    font-size: 17px;
     font-family: Tahoma, Geneva, sans-serif;
 }
 .post_header h1 {

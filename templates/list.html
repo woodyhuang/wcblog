@@ -21,7 +21,7 @@
 <section class="article-list">
     <div class="post_header">
         <div class="post_date">
-            {{ blog.created|date:'d' }}<span>{{ blog.created|date:'N' }}</span>
+            {{ blog.created|date:'d' }}<span>{{ blog.created|date:'Ym' }}</span>
         </div>
         <h1><a href="{% url post-detail blog.id %}">{{ blog.title }}</a></h1>
     </div>
