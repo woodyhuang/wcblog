@@ -5,7 +5,7 @@ A blog based on Django/Bootstrap/Creole, nice look under PC, Pad and Phone
 
 
 
-Depandence
+Dependence
 ---
 
 1. python-creole
